@@ -1,0 +1,132 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "Global Job Intelligence Schema",
+  "description": "Unified schema for global job/hiring/layoffs/talent-moves tracker",
+  "type": "object",
+  "event_types": [
+    "layoff",
+    "hiring_opening",
+    "talent_move_join",
+    "talent_move_departure",
+    "hiring_campaign",
+    "org_announcement_new_lab_or_team"
+  ],
+  "fields": {
+    "event_id": {
+      "type": "string",
+      "description": "Unique identifier (UUID or hash of unique fields)",
+      "format": "uuid"
+    },
+    "event_type": {
+      "type": "string",
+      "enum": ["layoff", "hiring_opening", "talent_move_join", "talent_move_departure", "hiring_campaign", "org_announcement_new_lab_or_team"],
+      "description": "Type of event"
+    },
+    "company_name": {
+      "type": "string",
+      "description": "Company name"
+    },
+    "company_domain_or_profile_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "Company website or profile URL"
+    },
+    "company_region": {
+      "type": "string",
+      "enum": ["US", "India", "EU", "APAC", "Middle East", "Latin America", "Africa", "Global"],
+      "description": "Primary company region"
+    },
+    "person_name": {
+      "type": "string",
+      "description": "Person involved (for talent moves)"
+    },
+    "person_profile_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "LinkedIn/Twitter profile URL"
+    },
+    "role_or_title": {
+      "type": "string",
+      "description": "Job title or role"
+    },
+    "role_category": {
+      "type": "string",
+      "enum": ["ai_ml", "sre_infra", "software", "product", "data", "fintech", "cybersecurity", "other"],
+      "description": "Broad category of role"
+    },
+    "location": {
+      "type": "string",
+      "description": "Job location (city, country, remote)"
+    },
+    "headcount_affected_or_open": {
+      "type": "integer",
+      "description": "Number of positions (layoffs: affected, openings: open)"
+    },
+    "salary_or_range_if_known": {
+      "type": "string",
+      "description": "Salary range (e.g., '$150k-$200k' or 'INR 20-30L')"
+    },
+    "seniority_level": {
+      "type": "string",
+      "enum": ["intern", "entry", "mid", "senior", "staff", "principal", "director", "vp", "cto"],
+      "description": "Seniority level"
+    },
+    "source_platform": {
+      "type": "string",
+      "description": "Platform where found (e.g., 'LinkedIn', 'Naukri', 'Company Website')"
+    },
+    "source_name": {
+      "type": "string",
+      "description": "Specific source name"
+    },
+    "source_url": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the original listing"
+    },
+    "source_date": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When the listing was posted"
+    },
+    "engagement_metrics": {
+      "type": "object",
+      "properties": {
+        "views": {"type": "integer"},
+        "applications": {"type": "integer"},
+        "likes": {"type": "integer"}
+      }
+    },
+    "free_text_summary": {
+      "type": "string",
+      "description": "Brief summary of the event"
+    },
+    "tags": {
+      "type": "array",
+      "items": {"type": "string"},
+      "description": "Tags for filtering (e.g., ['remote', 'ai', 'senior'])"
+    },
+    "confidence_score": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Confidence in data accuracy"
+    },
+    "first_seen_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "When this was first captured"
+    },
+    "last_seen_at": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Last time this was updated"
+    },
+    "market": {
+      "type": "string",
+      "enum": ["US", "India", "EU", "UK", "APAC", "Global"],
+      "description": "Market focus"
+    }
+  },
+  "required": ["event_id", "event_type", "company_name", "role_or_title", "source_name", "source_url", "first_seen_at"]
+}
