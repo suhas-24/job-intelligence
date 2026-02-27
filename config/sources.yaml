@@ -1,0 +1,298 @@
+# Global Job Intelligence Tracker - Source Configuration
+# All sources defined here. Add/remove with one line.
+
+# === CORE FREE JOB APIs (Priority: HIGH) ===
+core_apis:
+  - name: "RemoteOK"
+    url: "https://remoteok.com/api"
+    type: "api"
+    priority: 1
+    regions: ["US", "EU", "India", "Global"]
+    tags: ["remote", "tech", "startups"]
+    
+  - name: "Himalayas"
+    url: "https://himalayas.app/jobs/api"
+    type: "api"
+    priority: 1
+    regions: ["US", "EU", "India"]
+    tags: ["remote", "tech"]
+    
+  - name: "Jobicy"
+    url: "https://jobicy.com/api/v2/remote-jobs"
+    type: "api"
+    priority: 2
+    regions: ["US", "EU", "Global"]
+    tags: ["remote", "tech"]
+    
+  - name: "Arbeitnow"
+    url: "https://www.arbeitnow.com/api/job-board-api"
+    type: "api"
+    priority: 2
+    regions: ["EU", "US", "Global"]
+    tags: ["remote", "tech"]
+
+  - name: "JSearch"
+    url: "https://www.openwebninja.com/api/jsearch"
+    type: "api"
+    priority: 1
+    regions: ["US", "India", "Global"]
+    tags: ["tech", "salary_data"]
+    requires_key: true
+    free_tier: "200/month"
+
+# === INDIAN PORTALS (20+ sources) ===
+india_portals:
+  - name: "Naukri"
+    url: "https://www.naukri.com/nlogin/login"
+    type: "scraper"
+    priority: 1
+    regions: ["India"]
+    tags: ["tech", "it", "govt"]
+    note: "Use Apify free tier scraper"
+    
+  - name: "Foundit (ex-Monster)"
+    url: "https://www.foundit.in/"
+    type: "scraper"
+    priority: 2
+    regions: ["India"]
+    tags: ["tech", "it"]
+    
+  - name: "Shine"
+    url: "https://www.shine.com/"
+    type: "scraper"
+    priority: 2
+    regions: ["India"]
+    tags: ["tech"]
+    
+  - name: "TimesJobs"
+    url: "https://www.timesjobs.com/"
+    type: "scraper"
+    priority: 2
+    regions: ["India"]
+    tags: ["tech"]
+    
+  - name: "Apna"
+    url: "https://www.apna.co/"
+    type: "scraper"
+    priority: 2
+    regions: ["India"]
+    tags: ["tech", "blue_collar"]
+    
+  - name: "Hirist"
+    url: "https://www.hirist.com/"
+    type: "scraper"
+    priority: 2
+    regions: ["India"]
+    tags: ["tech", "it"]
+    
+  - name: "iimjobs"
+    url: "https://www.iimjobs.com/"
+    type: "scraper"
+    priority: 2
+    regions: ["India"]
+    tags: ["tech", "management"]
+    
+  - name: "Internshala"
+    url: "https://internshala.com/"
+    type: "scraper"
+    priority: 2
+    regions: ["India"]
+    tags: ["internships", "fresher"]
+    
+  - name: "Freshersworld"
+    url: "https://www.freshersworld.com/"
+    type: "scraper"
+    priority: 2
+    regions: ["India"]
+    tags: ["fresher", "tech"]
+    
+  - name: "Cutshort"
+    url: "https://cutshort.io/"
+    type: "scraper"
+    priority: 2
+    regions: ["India"]
+    tags: ["tech", "startups"]
+    
+  - name: "Instahyre"
+    url: "https://www.instahyre.com/"
+    type: "scraper"
+    priority: 2
+    regions: ["India"]
+    tags: ["tech", "premium"]
+    
+  - name: "Wellfound India"
+    url: "https://wellfound.com/india"
+    type: "api"
+    priority: 2
+    regions: ["India"]
+    tags: ["startups", "tech"]
+
+# === US PORTALS ===
+us_portals:
+  - name: "USAJOBS"
+    url: "https://developer.usajobs.gov/api"
+    type: "api"
+    priority: 1
+    regions: ["US"]
+    tags: ["gov", "federal"]
+    note: "Official US government jobs API - FREE"
+    
+  - name: "Dice"
+    url: "https://www.dice.com/"
+    type: "scraper"
+    priority: 2
+    regions: ["US"]
+    tags: ["tech"]
+    
+  - name: "BuiltIn"
+    url: "https://builtin.com/"
+    type: "scraper"
+    priority: 2
+    regions: ["US"]
+    tags: ["tech", "startups"]
+    
+  - name: "ZipRecruiter"
+    url: "https://www.ziprecruiter.com/"
+    type: "scraper"
+    priority: 2
+    regions: ["US"]
+    tags: ["tech"]
+
+# === EUROPE / APAC ===
+eu_apac_portals:
+  - name: "Reed.co.uk"
+    url: "https://www.reed.co.uk/api"
+    type: "api"
+    priority: 2
+    regions: ["UK", "EU"]
+    tags: ["tech"]
+    
+  - name: "Adzuna"
+    url: "https://api.adzuna.com/api"
+    type: "api"
+    priority: 2
+    regions: ["UK", "EU", "APAC"]
+    tags: ["tech"]
+    
+  - name: "Jooble"
+    url: "https://jooble.org/api/"
+    type: "api"
+    priority: 2
+    regions: ["Global"]
+    tags: ["tech"]
+    
+  - name: "Seek.com.au"
+    url: "https://www.seek.com.au/"
+    type: "scraper"
+    priority: 2
+    regions: ["APAC"]
+    tags: ["tech"]
+
+# === ATS PUBLIC FEEDS ===
+ats_feeds:
+  - name: "Greenhouse"
+    url: "{company}.greenhouse.io/v1boards/public"
+    type: "ats"
+    priority: 1
+    note: "Append company domain - e.g., airbnb.greenhouse.io/v1boards/public"
+    
+  - name: "Lever"
+    url: "https://api.lever.co/v0/postings/{company}"
+    type: "ats"
+    priority: 1
+    note: "Append company name - e.g., airbnb"
+    
+  - name: "Workday"
+    url: "https://jobs.{company}.workday.com/"
+    type: "ats"
+    priority: 2
+    
+  - name: "Ashby"
+    url: "https://jobs.ashby.co/api/{company}/postings"
+    type: "ats"
+    priority: 2
+
+# === LAYOFF TRACKERS ===
+layoff_trackers:
+  - name: "Layoffs.fyi"
+    url: "https://layoffs.fyi/"
+    type: "scrape"
+    priority: 1
+    tags: ["layoffs", "tech"]
+    
+  - name: "TrueUp"
+    url: "https://trueup.io/layoffs"
+    type: "scrape"
+    priority: 1
+    tags: ["layoffs", "tech"]
+    
+  - name: "Peerlist Layoffs"
+    url: "https://peerlist.io/layoffs-tracker"
+    type: "scrape"
+    priority: 1
+    tags: ["layoffs", "tech"]
+
+# === COMPANY CAREER RSS FEEDS (Sample - expand to 70+) ===
+career_pages:
+  tech_giants:
+    - "https://careers.google.com/"
+    - "https://jobs.meta.com/"
+    - "https://amazon.jobs/"
+    - "https://careers.microsoft.com/"
+    - "https://jobs.apple.com/"
+    - "https://nvidia.com/careers/"
+    
+  ai_frontier:
+    - "https://careers.openai.com/"
+    - "https://anthropic.com/careers"
+    - "https://x.ai/careers/"
+    - "https://deepmind.google/careers/"
+    
+  india_tech:
+    - "https://careers.infosys.com/"
+    - "https://careers.tcs.com/"
+    - "https://careers.wipro.com/"
+    - "https://careers.flipkart.com/"
+    - "https://careers.razorpay.com/"
+    - "https://careers.paytm.com/"
+
+# === ROLE CATEGORIES FOR FILTERING ===
+role_categories:
+  ai_ml:
+    - "AI Engineer"
+    - "Machine Learning Engineer"
+    - "ML Engineer"
+    - "Data Scientist"
+    - "Deep Learning"
+    - "NLP"
+    - "LLM"
+    - "GenAI"
+    - "Prompt Engineer"
+    
+  sre_infra:
+    - "Site Reliability Engineer"
+    - "SRE"
+    - "DevOps"
+    - "Cloud Engineer"
+    - "Infrastructure Engineer"
+    - "Platform Engineer"
+    - "Systems Engineer"
+    
+  software:
+    - "Software Engineer"
+    - "Full Stack"
+    - "Backend"
+    - "Frontend"
+    - "Mobile"
+    - "Developer"
+    
+  product:
+    - "Product Manager"
+    - "Program Manager"
+    - "Technical Lead"
+    
+  data:
+    - "Data Engineer"
+    - "Data Analyst"
+    - "BI Engineer"
+    - "Analytics Engineer"
